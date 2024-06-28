@@ -660,10 +660,7 @@ select {
   bottom: 0px;
 }
 
-/* DISCLAIMER ---------------------------------------------------------------------------------------------- */
-
 .disclaimer {
-  position: absolute;
   bottom: 15px;
   width: 100%;
 }

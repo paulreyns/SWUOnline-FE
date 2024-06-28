@@ -1,44 +1,11 @@
-import { useState } from 'react'
+import HomeHeader from '../../components/homeheader'
+import NavBar from '../../components/navbar'
 
-function MainPage() {
+function Main() {
   return (
     <>
-<div className="nav-bar">
-  
-  <div className="nav-bar-user">
-    <ul className="rightnav">
-              <li><a href="Signup.php" className="NavBarItem">Sign Up</a></li><li><a href="./LoginPage.php" className="NavBarItem">Log In</a></li>      </ul>
-  </div>
-  
-  <div className="nav-bar-links">
-    <ul>
-        <li>
-          <a target="_blank" href="https://discord.gg/hKRaqHND4v">
-            <img src="./Images/icons/discord.svg" />
-          </a>
-        </li>
-        <li><a target="_blank" href="https://github.com/OotTheMonk/SWUOnline"><img src="./Images/icons/github.svg" /></a></li>      
-      </ul>
-  </div>
-
-</div>
-<div className="home-header">
-  <a href="./MainMenu.php" className="title"> 
-      <div className="title">
-          <h1>Karabast</h1>
-          <p>The Fan-Made, Open-Source
-          Star Wars Unlimited Simulator</p>
-      </div>
-  </a>
-
-  <div className="home-banner">
-      <div className="banner block-1"></div>
-      <div className="banner block-2"></div>
-      <div className="banner block-3"></div>
-      <div className="banner block-4"></div>
-  </div>
-
-</div>
+<NavBar />
+<HomeHeader />
 <div className="core-wrapper">
 
 <div className="game-browser-wrapper">
@@ -102,4 +69,4 @@ function MainPage() {
   )
 }
 
-export default MainPage
+export default Main
