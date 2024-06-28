@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom"
+
 function HomeHeader() {
   return (
 <div className="home-header">
-  <a href="./MainMenu.php" className="title"> 
+  <Link to="/" className="title"> 
       <div className="title">
           <h1>Karabast</h1>
           <p>
@@ -10,7 +12,7 @@ function HomeHeader() {
             Star Wars Unlimited Simulator
           </p>
       </div>
-  </a>
+  </Link>
 
   <div className="home-banner">
       <div className="banner block-1"></div>
