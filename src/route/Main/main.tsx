@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import HomeHeader from '../../components/homeheader'
 import NavBar from '../../components/navbar'
 
@@ -13,7 +14,7 @@ function Main() {
     <div className="SpectatorContainer">
       <h2>Public Games</h2>
       <p className="login-notice">❗
-        <a href="./LoginPage.php">Log In</a> to use matchmaking and see open matches
+        <Link to="/Login">Log In</Link> to use matchmaking and see open matches
       </p>
       <div className="progress-title-wrapper">
         <h3 className="progress-header">Games In Progress</h3>
@@ -29,13 +30,13 @@ function Main() {
 <h2>Create New Game</h2>
 
 <form action="http://localhost:8080/SWUOnline/CreateGame.php">  
-<label htmlFor="fabdb"><u><a href="https://www.swudb.com/" target="_blank">SWUDB</a></u> Deck Link <span className="secondary">(use the url or 'Deck Link' button)</span></label>
+<label htmlFor="fabdb"><u><a href="https://www.swudb.com/" target="_blank" rel="noreferrer">SWUDB</a></u> Deck Link <span className="secondary">(use the url or &apos;Deck Link&apos; button)</span></label>
 <input type="text" id="fabdb" name="fabdb" />
   <label htmlFor="gameDescription" className="game-name-label">Game Name</label>
 <input type="text" id="gameDescription" name="gameDescription" placeholder="Game #" />
 
 <label htmlFor="format" className="SelectDeckInput">Format</label><select name="format" id="format"><option value="livinglegendscc">Open Format</option></select>
-<p className="login-notice">❗<a href="./LoginPage.php">Log In</a> to be able to create public games.</p>  <label htmlFor="private" className="privacy-label">
+<p className="login-notice">❗<Link to="/Login">Log In</Link> to be able to create public games.</p>  <label htmlFor="private" className="privacy-label">
   <input type="radio" className="privacy-input" id="private" name="visibility" value="private" />Private</label>
 <div>
   <input type="submit" className="create-game-button" value="Create Game" />
