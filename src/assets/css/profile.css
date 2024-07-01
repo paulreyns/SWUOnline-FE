@@ -1,0 +1,38 @@
+table {
+  border-radius: 10px;
+  border-spacing: 0;
+  border-collapse: collapse;
+  font-size: 1em;
+  line-height: 24px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+td {
+  border-bottom: 1px solid black;
+  text-align: center;
+  vertical-align: middle;
+  height: 50px;
+  padding: 10px;
+  font-size:0.95em;
+}
+
+tr:hover {
+  background-color: darkred;
+}
+
+h3 {
+  text-align: center;
+  font-size: 1.15em;
+}
+
+#cardDetail {
+    z-index:100000;
+    display:none;
+    position:fixed;
+}
+
+#wrapper {
+    text-align: center; 
+    position:relative;
+}

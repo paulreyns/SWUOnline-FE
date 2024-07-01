@@ -1,8 +1,8 @@
-import HomeHeader from '../../components/homeheader'
+import HomeHeader from '../../components/homeHeader'
 import NavBar from '../../components/navbar'
-import GameBrowser from './gamebrowser'
-import GameNews from './game-news'
-import CreateGame from './create-game'
+import GameBrowser from './gameBrowser'
+import GameNews from './gameNews'
+import CreateGame from './createGame'
 
 function Main() {
   return (

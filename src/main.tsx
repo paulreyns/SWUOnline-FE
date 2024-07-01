@@ -1,24 +1,27 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { RouterProvider } from 'react-router-dom';
+import { router } from './routes';
+import { Toaster } from 'react-hot-toast';
+import { Provider } from 'react-redux';
+import { store } from './app/store';
 import './assets/css/karabast.css'
-// Routes
-import Main from './route/Main/main.tsx';
-import Lobby from './route/Lobby/lobby.tsx';
-import Login from './route/Login/login.tsx';
-import SignUp from './route/Signup/signup.tsx';
-import PrivacyPolicy from './route/PrivacyPolicy/privacypolicy.tsx';
-
-const router = createBrowserRouter([
-  { path: "/", element: <Main /> },
-  { path: "/Lobby", element: <Lobby /> },
-  { path: "/Login", element: <Login /> },
-  { path: "/Signup", element: <SignUp /> },
-  { path: "/PrivacyPolicy", element: <PrivacyPolicy /> },
-]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+      <Provider store={store}>
+        <Toaster
+          position="top-left"
+          toastOptions={{
+            style: {
+              background: 'var(--dark-red)',
+              color: 'var(--white)',
+              border: '1px solid var(--primary)',
+              padding: '0.5rem'
+            }
+          }}
+        />
+        <RouterProvider router={router} />
+      </Provider>
   </React.StrictMode>,
 )

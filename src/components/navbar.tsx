@@ -1,18 +1,39 @@
 import { Link } from 'react-router-dom'
+import useAuth from '../hooks/useAuth';
 import discordLogo from '../assets/Images/icons/discord.svg'
 import githubLogo from '../assets/Images/icons/github.svg'
 
 function NavBar() {
+  const { isLoggedIn, logOut } = useAuth();
+  const handleLogOut = (e: React.MouseEvent) => {
+    e.preventDefault();
+    logOut();
+  };
+
   return (
     <div className="nav-bar">
       <div className="nav-bar-user">
         <ul className="rightnav">
+          {!isLoggedIn && (
           <li>
             <Link to="/Signup" className="NavBarItem">Sign Up</Link>
           </li>
+          )}
           <li>
-            <Link to="/Login" className="NavBarItem">Log In</Link>
+            {isLoggedIn ? (
+              <Link to="/Profile">Profile</Link>
+            ) : (
+              <Link to="/Login" className="NavBarItem">Log In</Link>
+            )}
+            
           </li>
+          {isLoggedIn && (
+            <li>
+              <a href="" onClick={handleLogOut}>
+                Logout
+              </a>
+            </li>
+          )}
         </ul>
       </div>
       <div className="nav-bar-links">

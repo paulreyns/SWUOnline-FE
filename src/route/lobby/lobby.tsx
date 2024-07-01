@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import HomeHeader from '../../components/homeheader'
+import HomeHeader from '../../components/homeHeader'
 import NavBar from '../../components/navbar'
 
 function Lobby() {
