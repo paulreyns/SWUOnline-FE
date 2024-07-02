@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom"
+import useAuth from "../../hooks/useAuth";
 
 function CreateGame() {
+  const { isLoggedIn } = useAuth();
+  
   return (
     <div className="create-game-wrapper">
       <div className="create-game container bg-black">
@@ -15,7 +18,7 @@ function CreateGame() {
 
           <label htmlFor="format" className="SelectDeckInput">Format</label>
           <select name="format" id="format"><option value="livinglegendscc">Open Format</option></select>
-          <p className="login-notice">❗<Link to="/Login">Log In</Link> to be able to create public games.</p>
+          {isLoggedIn === false && <p className="login-notice">❗<Link to="/Login">Log In</Link> to be able to create public games.</p> }
           <label htmlFor="private" className="privacy-label">
             <input type="radio" className="privacy-input" id="private" name="visibility" value="private" />Private
           </label>
