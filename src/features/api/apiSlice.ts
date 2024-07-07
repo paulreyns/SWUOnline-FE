@@ -9,28 +9,20 @@ import {
 import { isRejectedWithValue } from '@reduxjs/toolkit';
 import type { MiddlewareAPI, Middleware } from '@reduxjs/toolkit';
 import { BACKEND_URL, ROGUELIKE_URL, URL_END_POINT } from '../../appConstants';
-// import {
-//   CreateGameAPI,
-//   CreateGameResponse
-// } from 'interface/API/CreateGame.php';
+import { CreateGameAPI, CreateGameResponse } from '../../interface/api/createGame.php';
 import { toast } from 'react-hot-toast';
-// import { JoinGameAPI, JoinGameResponse } from 'interface/API/JoinGame.php';
-// import {
-//   GetLobbyInfo,
-//   GetLobbyInfoResponse
-// } from 'interface/API/GetLobbyInfo.php';
-// import { SubmitLobbyInput } from 'interface/API/SubmitLobbyInput.php';
+import { JoinGameAPI, JoinGameResponse } from '../../interface/api/joinGame.php';
+import { GetLobbyInfo, GetLobbyInfoResponse } from '../../interface/api/getLobbyInfo.php';
+import { SubmitLobbyInput } from '../../interface/api/submitLobbyInput.php';
 // import { ChooseFirstPlayer } from 'interface/API/ChooseFirstPlayer.php';
 // import { SubmitSideboardAPI } from 'interface/API/SubmitSideboard.php';
-// import { GetFavoriteDecksResponse } from 'interface/API/GetFavoriteDecks.php';
+import { GetFavoriteDecksResponse } from '../../interface/api/getFavoriteDecks.php';
 // import { GameListResponse } from 'routes/index/components/gameList/GameList';
 // import { GetCosmeticsResponse } from 'interface/API/GetCosmeticsResponse.php';
-// import {
-//   DeleteDeckAPIRequest,
-//   DeleteDeckAPIResponse
-// } from 'interface/API/DeleteDeckAPI.php';
+import { DeleteDeckAPIRequest, DeleteDeckAPIResponse } from '../../interface/api/deleteDeckAPI.php';
 // import { PatreonLoginResponse } from 'routes/user/profile/linkpatreon/linkPatreon';
 import { UserProfileAPIResponse } from '../../interface/api/userProfileAPIResponse';
+import { GameListResponse } from '../../interface/api/getGameList.php';
 // import { SubmitChatAPI } from 'interface/API/SubmitChat.php';
 // import { getGameInfo } from '../game/GameSlice';
 // import { RootState } from '../../app/Store';
@@ -113,6 +105,44 @@ export const apiSlice = createApi({
         };
       }
     }),
+    getGameList: builder.query<GameListResponse, undefined>({
+      query: () => {
+        return {
+          url: URL_END_POINT.GET_GAME_LIST,
+          method: 'GET',
+          responseHandler: parseResponse
+        };
+      }
+    }),
+    // getCosmetics: builder.query<GetCosmeticsResponse, undefined>({
+    //   query: () => {
+    //     return {
+    //       url: URL_END_POINT.GET_COSMETICS,
+    //       responseHandler: parseResponse
+    //     };
+    //   }
+    // }),
+    getFavoriteDecks: builder.query<GetFavoriteDecksResponse, undefined>({
+      query: () => {
+        return {
+          url: URL_END_POINT.GET_FAVORITE_DECKS,
+          responseHandler: parseResponse
+        };
+      },
+      transformResponse: (response: GetFavoriteDecksResponse, metra, arg) => {
+        return response;
+      }
+    }),
+    deleteDeck: builder.mutation<DeleteDeckAPIResponse, DeleteDeckAPIRequest>({
+      query: (body: DeleteDeckAPIRequest) => {
+        return {
+          url: URL_END_POINT.DELETE_DECK,
+          method: 'post',
+          body: body,
+          responseHandler: parseResponse
+        };
+      }
+    }),
     login: builder.mutation({
       query: (body) => {
         return {
@@ -172,6 +202,45 @@ export const apiSlice = createApi({
         };
       }
     }),
+    createGame: builder.mutation<CreateGameResponse, CreateGameAPI>({
+      query: (body: CreateGameAPI) => {
+        return {
+          url: URL_END_POINT.CREATE_GAME,
+          method: 'POST',
+          body: body,
+          responseHandler: parseResponse
+        };
+      },
+      // Pick out errors and prevent nested properties in a hook or selector
+      transformErrorResponse: (response: { status: string | number }) =>
+        response.status
+    }),
+    joinGame: builder.mutation<JoinGameResponse, JoinGameAPI>({
+      query: (body: JoinGameAPI) => {
+        return {
+          url: URL_END_POINT.JOIN_GAME,
+          method: 'POST',
+          body: body,
+          responseHandler: parseResponse
+        };
+      },
+      transformErrorResponse: (
+        response: { status: string | number }
+      ) => response.status
+    }),
+    getLobbyInfo: builder.query({
+      query: ({ ...body }: GetLobbyInfo) => {
+        return {
+          url: URL_END_POINT.GET_LOBBY_INFO,
+          method: 'POST',
+          body: body,
+          responseHandler: parseResponse
+        };
+      },
+      transformResponse: (response: GetLobbyInfoResponse) => {
+        return response;
+      }
+    }),
     processInputAPI: builder.mutation({
       query: ({ ...body }) => {
         return {
@@ -200,7 +269,17 @@ export const apiSlice = createApi({
           responseHandler: parseResponse
         };
       }
-    })
+    }),
+    submitLobbyInput: builder.mutation({
+      query: ({ ...body }: SubmitLobbyInput) => {
+        return {
+          url: URL_END_POINT.SUBMIT_LOBBY_INPUT,
+          method: 'POST',
+          body: body,
+          responseHandler: parseResponse
+        };
+      }
+    }),
   })
 });
 
@@ -208,24 +287,24 @@ export const apiSlice = createApi({
 export const {
   useGetPopUpContentQuery,
   // useSubmitChatMutation,
-  // useGetGameListQuery,
+  useGetGameListQuery,
   // useGetCosmeticsQuery,
-  // useGetFavoriteDecksQuery,
-  // useDeleteDeckMutation,
+  useGetFavoriteDecksQuery,
+  useDeleteDeckMutation,
   useLoginMutation,
   useLoginWithCookieQuery,
   useLogOutMutation,
   useSignUpMutation,
   useForgottenPasswordMutation,
   useResetPasswordMutation,
-  // useCreateGameMutation,
-  // useJoinGameMutation,
-  // useGetLobbyInfoQuery,
+  useCreateGameMutation,
+  useJoinGameMutation,
+  useGetLobbyInfoQuery,
   useProcessInputAPIMutation,
   // useChooseFirstPlayerMutation,
   // useSubmitSideboardMutation,
   // useSubmitPatreonLoginMutation,
   useLoadDebugGameMutation,
   useGetUserProfileQuery,
-  //useSubmitLobbyInputMutation
+  useSubmitLobbyInputMutation
 } = apiSlice;

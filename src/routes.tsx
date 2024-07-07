@@ -7,6 +7,7 @@ import Login from './route/login/login.tsx';
 import SignUp from './route/signup/signup.tsx';
 import Profile from './route/profile/profile.tsx';
 import PrivacyPolicy from './route/privacyPolicy/privacypolicy.tsx';
+import JoinGame from './route/joinGame/joinGame.tsx';
 
 const LoggedInGuard = ({
   children,
@@ -34,6 +35,7 @@ const LoggedInGuard = ({
 export const router = createBrowserRouter([
   { path: "/", element: <Main /> },
   { path: "/Lobby", element: <Lobby /> },
+  { path: "/JoinGame/:gameID", element: <JoinGame /> },
   { path: "/Login", element: <Login /> },
   { path: "/Signup", element: <SignUp /> },
   { path: "/Profile", element: <LoggedInGuard shouldBeLoggedIn={true}><Profile /></LoggedInGuard> },

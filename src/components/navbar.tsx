@@ -1,13 +1,15 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import useAuth from '../hooks/useAuth';
 import discordLogo from '../assets/Images/icons/discord.svg'
 import githubLogo from '../assets/Images/icons/github.svg'
 
 function NavBar() {
   const { isLoggedIn, logOut } = useAuth();
+  const navigate = useNavigate();
   const handleLogOut = (e: React.MouseEvent) => {
     e.preventDefault();
     logOut();
+    navigate('/');
   };
 
   return (

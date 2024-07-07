@@ -163,3 +163,15 @@ export const QUERY_STATUS = {
   LOADING: 'loading',
   IDLE: 'idle'
 };
+
+export const GAME_FORMAT = {
+  PREMIER: 'cc',
+  COMPETATIVE_PREMIER: 'compcc',
+  OTHER: 'openformatcc',
+};
+
+export const GAME_FORMAT_NUMBER = {
+  PREMIER: 0,
+  COMPETATIVE_PREMIER: 1,
+  OTHER: 2,
+};

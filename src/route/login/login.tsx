@@ -93,14 +93,14 @@ function Login() {
         <h2>Log In</h2>
         <p className="login-message">Make sure to use your username, not your email!</p>
         
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <label>Username</label>
+        <form className="container-form" onSubmit={handleSubmit(onSubmit)}>
+          <label htmlFor="userID">Username</label>
           <input className="username" type="text" {...register('userID')} />
-          <label>Password</label>
+          <label htmlFor="password">Password</label>
           <input className="password" type="password" {...register('password')} />
           <div className="remember-me">
-          <input type="checkbox" {...register('rememberMe')} />
-          <label htmlFor="rememberMe">Remember Me</label> 
+            <input type="checkbox" {...register('rememberMe')} />
+            <label htmlFor="rememberMe">Remember Me</label> 
           </div>
           <button type="submit" disabled={isSubmitting} aria-busy={isSubmitting}>
             Submit

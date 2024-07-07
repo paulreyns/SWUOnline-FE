@@ -91,7 +91,7 @@ body {
   margin: 0px;
 }
 
-button, input, select, textarea {
+button, input, select, textarea, .button {
   padding: 10px 15px;
   background: #394452;
   border: 0;
@@ -140,6 +140,11 @@ select {
   -webkit-backdrop-filter: blur(20px);
   scrollbar-color: #888888 rgba(0, 0, 0, 0); 
   scrollbar-width: thin;
+}
+
+.container-form {
+  width: 100%;
+  display: inline-block;
 }
 
 .bg-blue { 
@@ -286,6 +291,7 @@ select {
 
 .game-browser .game-name {
   width: 100%;
+  text-align: start;
 }
 
 .game-browser input {
@@ -324,6 +330,7 @@ select {
 .format-title {
   font-weight: 600;
   margin-bottom: 5px;
+  text-align: start;
 }
 
 /* Create Game */
@@ -341,7 +348,8 @@ select {
 @media screen and (max-height: 780px) { .create-game-wrapper { height:auto; max-height: 503px; } }
 
 .create-game-wrapper input, .create-game-wrapper select {
-  width: 100%;
+  /* Unsure why but getting 30px extra here */
+  width: calc(100% - 30px);
 }
 
 .privacy-input, .inputFavoriteDeck { 
@@ -349,7 +357,7 @@ select {
   margin: 0 5px 0 0;
 }
 
-#fabdb {
+#swudb {
   margin-bottom: 10px;
 }
 
@@ -410,7 +418,11 @@ select {
   padding-bottom: 0;
 }
 
-.game-invite #fabdb, .game-invite #favoriteDecks {
+.game-invite #swudb {
+  width: calc(100% - 30px);
+}
+
+.game-invite #favoriteDecks {
   width: 100%;
 }
 
@@ -422,7 +434,7 @@ select {
 /* LOG IN --------------------------------------------------------------------------------------------------- */
 
 .username, .password {
-  width: 100%;
+  width: calc(100% - 30px);
 }
 
 .login, .login-message {
@@ -436,7 +448,7 @@ select {
 /* SIGN UP -------------------------------------------------------------------------------------------------- */
 
 .signup-form input {
-  width: 100%;
+  width: calc(100% - 30px);
 }
 
 .signup-form-form {
