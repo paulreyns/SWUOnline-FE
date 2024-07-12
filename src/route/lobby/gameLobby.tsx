@@ -9,11 +9,13 @@ function GameLobby() {
         <div id="mainPanel" style={{textAlign:'center'}}>
           <div className="game-set-up container bg-blue">
             <h2>Set Up</h2>
-            <div id="setup-content"><p>Waiting for another player to join.</p>
-            <div className="invite-link-wrapper">
+            <div id="setup-content">
+              <p>Waiting for another player to join.</p>
+              <div className="invite-link-wrapper">
                 <input className="GameLobby_Input invite-link" onClick={copyText} type="text" id="gameLink" value="http://localhost:8080/SWUOnline/JoinGame.php?gameName=5&amp;playerID=2" />
                 <button className="GameLobby_Button" onClick={copyText}>Copy Invite Link</button>
-                </div></div>
+              </div>
+            </div>
             <div id="submitForm">
               <form action="./SubmitSideboard.php">
                 <input type="hidden" id="gameName" name="gameName" value="5" />

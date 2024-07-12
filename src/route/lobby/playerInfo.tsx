@@ -10,13 +10,13 @@ function GameLobby() {
           <h3><span>paulreynolds</span></h3>
           <div className="display-card">
             <a className="display-card" onMouseEnter={showCardDetail} onMouseLeave={hideCardDetail}>
-                <img data-orientation="landscape" className="cardImage" src="WebpImages2/2579145458.webp" />
+                <img data-orientation="landscape" className="cardImage" src="WebpImages2/CardBack.webp" />
                 <div className="overlay"></div>
             </a>
           </div>
           <div className="display-card">
             <a className="display-card" onMouseEnter={showCardDetail} onMouseLeave={hideCardDetail}>
-                <img data-orientation="landscape" className="cardImage" src="WebpImages2/6093792814.webp" />
+                <img data-orientation="landscape" className="cardImage" src="WebpImages2/CardBack.webp" />
                 <div className="overlay"></div>
             </a>
           </div>

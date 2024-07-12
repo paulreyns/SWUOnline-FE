@@ -18,7 +18,7 @@ const OpenGame = ({
         {isOther && <div>{entry.formatName}</div>}
       </td>
       <td>
-        <Link to={`/JoinGame/${entry.gameName}`} className="button ServerChecker_Button" id="joinGame">
+        <Link to={`/Join/${entry.gameName}`} className="button ServerChecker_Button" id="joinGame">
           Join Game
         </Link>
       </td>

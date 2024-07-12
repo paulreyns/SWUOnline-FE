@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import GameLobby from "./gameLobby";
 import PlayerInfo from "./playerInfo";
 
@@ -9,7 +10,7 @@ function Lobby() {
         </div>
         <div className="lobby-header">
           <h1>Game Lobby</h1>
-          <p className="leave-lobby"><a href="MainMenu.php">Leave Lobby</a></p>
+          <p className="leave-lobby"><Link to="/">Leave Lobby</Link></p>
         </div>
         <div className="lobby-wrapper">
           <GameLobby></GameLobby>
