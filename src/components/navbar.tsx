@@ -32,7 +32,7 @@ function NavBar() {
           {isLoggedIn && (
             <li>
               <a href="" onClick={handleLogOut}>
-                Logout
+                Log Out
               </a>
             </li>
           )}

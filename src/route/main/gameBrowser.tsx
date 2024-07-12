@@ -3,14 +3,15 @@ import useAuth from "../../hooks/useAuth";
 import FormatList from "./components/formatList";
 import { GAME_FORMAT } from '../../appConstants';
 import { useGetGameListQuery } from "../../features/api/apiSlice";
-import { IOpenGame } from "../../interface/api/getGameList.php";
 
 function GameBrowser() {
   const { isLoggedIn } = useAuth();
   const { data, isLoading, error, refetch, isFetching } =
     useGetGameListQuery(undefined);
   
-  const games = data?.openGames ? [...data.openGames] : [];
+  let sortedOpenGames = data?.openGames ? [...data.openGames] : [];
+  sortedOpenGames = sortedOpenGames
+    .sort((a, b) => a?.format?.localeCompare(b?.format));
   
   return (
     <div className="game-browser-wrapper">
@@ -21,11 +22,11 @@ function GameBrowser() {
             <Link to="/Login">Log In</Link> to use matchmaking and see open matches
           </p> }
           { isLoggedIn === true && <>
-            <FormatList name="Premier" games={games
+            <FormatList name="Premier" games={sortedOpenGames
               .filter((game) => game.format === GAME_FORMAT.PREMIER)} />
-            <FormatList name="Request-Undo Premier" games={games
+            <FormatList name="Request-Undo Premier" games={sortedOpenGames
               .filter((game) => game.format === GAME_FORMAT.COMPETATIVE_PREMIER)} />
-            <FormatList name="Other" games={games
+            <FormatList name="Other" games={sortedOpenGames
               .filter((game) => game.format === GAME_FORMAT.OTHER)} />
             </>}
           <div className="progress-title-wrapper">

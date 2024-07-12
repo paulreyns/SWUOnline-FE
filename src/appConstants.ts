@@ -167,7 +167,7 @@ export const QUERY_STATUS = {
 export const GAME_FORMAT = {
   PREMIER: 'cc',
   COMPETATIVE_PREMIER: 'compcc',
-  OTHER: 'openformatcc',
+  OTHER: 'livinglegendscc',
 };
 
 export const GAME_FORMAT_NUMBER = {

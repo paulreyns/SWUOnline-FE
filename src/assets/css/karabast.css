@@ -499,6 +499,52 @@ select {
   height: 100vh;
 }
 
+.lobby-container #cardDetail {
+  display: none; 
+  position: absolute; 
+  left: 592px; 
+  top: 5px; 
+  z-index: 100000;
+}
+
+.lobby-container #submitForm {
+  width:100%; 
+  text-align: center; 
+  display: none;
+}
+
+.lobby-container .player-info div.display-card {
+  position:relative;
+  display: inline-block;
+}
+
+.lobby-container .player-info a.display-card {
+  margin-bottom:8px; 
+  top: 0px; 
+  position:relative; 
+  display:inline-block;
+}
+
+.lobby-container .player-info .overlay {
+  visibility:hidden; 
+  height: 177.5px; 
+  width: 250px; 
+  top:2px; 
+  left:2px; 
+  position:absolute; 
+  background: rgba(0, 0, 0, 0.5); 
+  z-index: 1; 
+  border-radius: 8px;
+} 
+
+.lobby-container .player-info img.cardImage {
+  border: 1px solid transparent;
+  height: 177.5px;
+  width: 250px;
+  position:relative;
+  border-radius:10px;
+} 
+
 /* Header */
 
 .lobby-header {
